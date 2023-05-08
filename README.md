@@ -9,7 +9,7 @@ Ce projet a été réalisé dans le but de pouvoir progressé sur Java Spigot.
 Mais il permet de pouvoir comprendre le mode de jeu réalisé.
 Je l'ai commencé en Décembre 2022, sans conaissance.
 
-## 📚 Libs
+## 📚 Usages / API / Libs
 
 - Spigot 1.12.2 ```https://cdn.getbukkit.org/spigot/spigot-1.12.2.jar```
 - FastBoard ```https://github.com/MrMicky-FR/FastBoard```
