@@ -1,0 +1,10 @@
+name: Smash
+version: '1.0-SNAPSHOT'
+main: fr.loanspac.smash.Smash
+authors: [LoanSpac]
+commands:
+  spawn:
+
+  staff:
+
+  start:

@@ -1,0 +1,10 @@
+name: Smash
+version: '${version}'
+main: fr.loanspac.smash.Smash
+authors: [LoanSpac]
+commands:
+  spawn:
+
+  staff:
+
+  start:
