@@ -5,21 +5,19 @@ import fr.loanspac.smash.champion.Champion;
 import fr.loanspac.smash.champion.bario.Bario;
 import fr.loanspac.smash.game.EGames;
 import fr.loanspac.smash.game.GameSettings;
+import fr.loanspac.smash.game.player.SmashPlayer;
 import fr.loanspac.smash.manager.ScoreboardManager;
 import fr.loanspac.smash.team.Team;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
-import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -28,22 +26,18 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
-/*
- * Nom de classe : SmashTask
- * Description   : SmashTask class
- * Version       : 1.0
- * Date          : 04/04/2023
- * Copyright     : LoanSpac
- */
-
 public class SmashTask extends BukkitRunnable implements Listener {
     public static int time = 0;
-    private static List<Player> inPVP = new ArrayList<>();
+    private static final List<Player> inPVP = new ArrayList<>();
     public static ArrayList<Player> alives = new ArrayList<>();
 
     public static List<Player> getInPVP() {
         return inPVP;
     }
+
+
+    // set blast zone
+
 
     public static void equipPlayer(Player player) {
         player.getInventory().clear();
@@ -52,8 +46,22 @@ public class SmashTask extends BukkitRunnable implements Listener {
             champ = new Bario();
             Smash.champion.put(player, new Bario());
         }
-        champ.setArmor(player);
-        champ.setItems(player);
+        player.getInventory().setArmorContents(champ.getArmor(player));
+        List<Integer> item = new ArrayList<>();
+        item.add(1);
+        item.add(2);
+        item.add(3);
+        item.add(8);
+        for(Integer i : item) {
+            player.getInventory().setItem(i, champ.getItems(player).get(item.indexOf(i)));
+        }
+        player.getInventory().setItem(0, Objects.requireNonNull(champ.getMainItem(player)));
+    }
+
+    public static void effectPlayer(Player player) {
+        player.getActivePotionEffects().clear();
+        Champion champ = Smash.champion.get(player);
+        champ.setPassif(player);
     }
 
     private static void teleportPlayers(List<Player> players) {
@@ -73,52 +81,21 @@ public class SmashTask extends BukkitRunnable implements Listener {
         for(Player players : Bukkit.getOnlinePlayers()) {
             if(Smash.team.get(players).equals(Team.RED)) {
                 countRed ++;
+                continue;
             }
-            if(Smash.team.get(players).equals(Team.BLUE)) {
-                countBlue ++;
-            }
+            countBlue ++;
         }
         if(countRed > countBlue) {
             Smash.team.put(player, Team.BLUE);
+            return;
         }
-        else if(countRed < countBlue) {
-            Smash.team.put(player, Team.RED);
-        }
-        else {
-            Smash.team.put(player, Team.RED);
-        }
-    }
-
-    @EventHandler
-    public void onDeath(EntityDeathEvent event) {
-        if(EGames.getCurrentState().equals(EGames.SMASH)) {
-            if(event.getEntity() instanceof Player) {
-                Player player = (Player) event.getEntity();
-                if(getInPVP().contains(player)) {
-                    alives.remove(player);
-                    getInPVP().remove(player);
-                    event.getDrops().clear();
-                    event.getDrops().add(new ItemStack(Material.GOLDEN_APPLE, 2));
-                    event.setDroppedExp(0);
-                    Bukkit.broadcastMessage("§c" + player.getName() + " §6est mort !");
-                    player.setGameMode(GameMode.SPECTATOR);
-                    if(alives.size() > 1){
-                        Bukkit.getScheduler().runTaskLater(Smash.getInstance(), () -> {
-                            player.teleport(alives.get(0));
-                        }, 10);
-                    }
-
-                }
-            }
-        }
+        Smash.team.put(player, Team.RED);
     }
 
     @EventHandler
     public static void onLeave(PlayerQuitEvent event){
         if(EGames.getCurrentState().equals(EGames.SMASH)){
-            if(alives.contains(event.getPlayer())){
-                alives.remove(event.getPlayer());
-            }
+            alives.remove(event.getPlayer());
             getInPVP().remove(event.getPlayer());
         }
     }
@@ -127,18 +104,16 @@ public class SmashTask extends BukkitRunnable implements Listener {
     public static void onConnect(PlayerJoinEvent event){
         if(EGames.getCurrentState().equals(EGames.SMASH)) {
             Player player = event.getPlayer();
-            if (alives.contains(player)) {
-                alives.remove(player);
-            }
+            alives.remove(player);
+
             getInPVP().remove(player);
             player.setGameMode(GameMode.SPECTATOR);
             player.playSound(player.getLocation(), Sound.ENTITY_CAT_HISS, 1, 1);
             player.sendMessage(GameSettings.prefix + "§cLa partie est déjà en cours !");
         } else if(EGames.getCurrentState().equals(EGames.END)) {
             Player player = event.getPlayer();
-            if (alives.contains(player)) {
-                alives.remove(player);
-            }
+            alives.remove(player);
+
             getInPVP().remove(player);
             player.setGameMode(GameMode.SPECTATOR);
             player.playSound(player.getLocation(), Sound.ENTITY_ENDERMEN_TELEPORT, 1, 1);
@@ -158,10 +133,15 @@ public class SmashTask extends BukkitRunnable implements Listener {
                 }
                 teleportPlayers(alives);
                 equipPlayer(players);
+                effectPlayer(players);
                 players.setAllowFlight(true);
+                players.setMaxHealth(6);
+                Smash.player.put(players, new SmashPlayer());
+                Smash.player.get(players).setKbmod(1d);
+                Smash.player.get(players).setPercent(0d);
+                Smash.player.get(players).setWeight(Smash.champion.get(players).getWeight());
             }
             Bukkit.getWorld("world").setPVP(true);
-            //new SmashGame(0).startSmash(0);
         }
         if(time > 0) {
             for (Player players : GameSettings.getGamePlayers()) {

@@ -13,6 +13,7 @@ public class ItemManager {
         ItemStack item = new ItemStack(material, 1);
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.setDisplayName(name);
+        itemMeta.setUnbreakable(true);
         LeatherArmorMeta itemColor = (LeatherArmorMeta) itemMeta;
         itemColor.setColor(Color.fromBGR(B,G,R));
         item.setItemMeta(itemColor);
@@ -23,6 +24,7 @@ public class ItemManager {
         ItemStack item = new ItemStack(material);
         ItemMeta itemM = item.getItemMeta();
         itemM.setDisplayName(name);
+        itemM.setUnbreakable(true);
         if(ench) {
             itemM.addEnchant(Enchantment.DURABILITY, 1, true);
             itemM.addItemFlags(ItemFlag.HIDE_ENCHANTS);

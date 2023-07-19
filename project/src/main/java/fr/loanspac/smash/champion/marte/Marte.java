@@ -1,7 +1,7 @@
-package fr.loanspac.smash.champion.bario;
+package fr.loanspac.smash.champion.marte;
 
 import fr.loanspac.smash.champion.Champion;
-import fr.loanspac.smash.champion.bario.spell.BarioSpell;
+import fr.loanspac.smash.champion.marte.spell.MarteSpell;
 import fr.loanspac.smash.utils.ItemManager;
 import fr.loanspac.smash.utils.Skull;
 import org.bukkit.Material;
@@ -11,11 +11,11 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bario extends Champion {
+public class Marte extends Champion {
 
     @Override
     public String name() {
-        return "Bario";
+        return "Marte";
     }
 
     @Override
@@ -25,10 +25,10 @@ public class Bario extends Champion {
 
     @Override
     public ItemStack[] getArmor(Player player) {
-        ItemStack helmet = Skull.getSkull("§bBario", "http://textures.minecraft.net/texture/d70d3ece62a3b12344c4b1304a839c692ddde3370bc76a38fc0cca79ec5f2ab8");
-        ItemStack chesplate = ItemManager.getArmor(Material.LEATHER_CHESTPLATE, "§bTunique de Bario", 213,6,6);
-        ItemStack leggings = ItemManager.getArmor(Material.LEATHER_LEGGINGS, "§bPantalon de Bario", 150,6,6);
-        ItemStack boots = ItemManager.getArmor(Material.LEATHER_BOOTS, "§bBottes de Bario", 60,99,166);
+        ItemStack helmet = Skull.getSkull("§bMarte", "http://textures.minecraft.net/texture/968b446b3315130f35e4e0d5daeed0562a1565a11f16b5c2a90f5fad15a089be");
+        ItemStack chesplate = ItemManager.getArmor(Material.LEATHER_CHESTPLATE, "§bTunique de Marte", 178,102,98);
+        ItemStack leggings = ItemManager.getArmor(Material.LEATHER_LEGGINGS, "§bPantalon de Marte", 158,19,19);
+        ItemStack boots = ItemManager.getArmor(Material.LEATHER_BOOTS, "§bBottes de Marte", 23,52,79);
 
         ItemStack[] armorContents = new ItemStack[4];
 
@@ -42,10 +42,10 @@ public class Bario extends Champion {
 
     @Override
     public List<ItemStack> getItems(Player player) {
-        ItemStack offensif = ItemManager.getItem(Material.FIREBALL, "§dBoule de feu", true);
-        ItemStack defensif = Skull.getSkull("§bSuper Champignon", "http://textures.minecraft.net/texture/ff96b8d01f5835ed38afd4530228d0b5abb7d45a355519ea680c40ffca32edf2");
-        ItemStack recovery = ItemManager.getItem(Material.FEATHER, "§d360 Jump", true);
-        ItemStack passif = ItemManager.getItem(Material.SUGAR, "§dSpeed", false);
+        ItemStack offensif = ItemManager.getItem(Material.GHAST_TEAR, "§dChope", true);
+        ItemStack defensif = ItemManager.getItem(Material.CHAINMAIL_CHESTPLATE, "§dContre Total", true);
+        ItemStack recovery = ItemManager.getItem(Material.FEATHER, "§dCharge du Dauphin", true);
+        ItemStack passif = ItemManager.getItem(Material.FLINT, "§dPrécision", false);
 
         ArrayList<ItemStack> items = new ArrayList<>();
 
@@ -59,26 +59,26 @@ public class Bario extends Champion {
 
     @Override
     public ItemStack getMainItem(Player player) {
-        return null;
+        return ItemManager.getItem(Material.IRON_SWORD, "§aFalchion", false);
     }
 
     @Override
     public void setOffensif(Player player, ItemStack item) {
-        new BarioSpell().offensif(player, item);
+        new MarteSpell().offensif();
     }
 
     @Override
     public void setDefensif(Player player, ItemStack item) {
-        new BarioSpell().defensif(player, item);
+        new MarteSpell().defensif();
     }
 
     @Override
     public void setRecovery(Player player, ItemStack item) {
-        new BarioSpell().recovery(player, item);
+        new MarteSpell().recovery();
     }
 
     @Override
     public void setPassif(Player player) {
-        new BarioSpell().passif(player);
+        new MarteSpell().passif();
     }
 }

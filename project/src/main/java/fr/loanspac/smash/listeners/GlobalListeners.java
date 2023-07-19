@@ -13,14 +13,6 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
 
-/*
- * Nom de classe : GlobalListeners
- * Description   : Global event class
- * Version       : 1.0
- * Date          : 16/04/2023
- * Copyright     : LoanSpac
- */
-
 public class GlobalListeners implements Listener {
     @EventHandler
     public void onWeatherChange(WeatherChangeEvent event) {

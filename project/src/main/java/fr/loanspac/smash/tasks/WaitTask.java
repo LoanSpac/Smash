@@ -12,15 +12,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
-
-/*
- * Class Name : WaitTask
- * Description   : WaitTask class
- * Version       : 1.0
- * Date          : 04/04/2023
- * Copyright     : LoanSpac
- */
 
 public class WaitTask extends BukkitRunnable implements Listener {
     private static int counter = 20;
@@ -29,7 +22,10 @@ public class WaitTask extends BukkitRunnable implements Listener {
     public static void onConnect(PlayerJoinEvent event){
         if(EGames.getCurrentState().equals(EGames.WAITING)) {
             Player player = event.getPlayer();
-            player.getActivePotionEffects().clear();
+            player.removePotionEffect(PotionEffectType.SPEED);
+            player.setWalkSpeed(0.2f);
+            player.setMaxHealth(20);
+            player.setHealth(20);
             player.showPlayer(Smash.getInstance(), player);
             player.setGlowing(false);
             if(!(player.getGameMode().equals(GameMode.ADVENTURE))){

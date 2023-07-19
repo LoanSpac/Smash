@@ -17,14 +17,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-/*
- * Nom de classe : WaitingListeners
- * Description   : Wait listeners class
- * Version       : 1.0
- * Date          : 04/04/2023
- * Copyright     : LoanSpac
- */
-
 public class WaitingListeners implements Listener {
     @EventHandler
     public void onFireTick(EntityDamageEvent event){
@@ -66,9 +58,6 @@ public class WaitingListeners implements Listener {
         Player player = event.getPlayer();
 
         Smash.team.put(player, Team.NEUTRAL);
-        Smash.percentage.put(player, 0d);
-        Smash.weight.put(player, 1d);
-        Smash.kbmod.put(player, 1d);
 
         ItemStack mainMenu = ItemManager.getItem(Material.NETHER_STAR, "§6Main", false);
         player.getInventory().setItem(0, mainMenu);

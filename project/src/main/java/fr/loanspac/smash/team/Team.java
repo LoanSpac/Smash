@@ -1,13 +1,5 @@
 package fr.loanspac.smash.team;
 
-/*
- * Nom de classe : Team
- * Description   : List of Teams
- * Version       : 1.0
- * Date          : 04/04/2023
- * Copyright     : LoanSpac
- */
-
 public enum Team {
     ///////////////////////TEAM ENUMERATION///////////////////////
     RED("Red Team"),

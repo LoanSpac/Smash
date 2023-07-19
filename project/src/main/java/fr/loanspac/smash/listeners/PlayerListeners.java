@@ -11,14 +11,6 @@ import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-/*
- * Nom de classe : PlayerListeners
- * Description   : Player Listeners class
- * Version       : 1.0
- * Date          : 04/04/2023
- * Copyright     : LoanSpac
- */
-
 public class PlayerListeners implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
@@ -33,22 +25,16 @@ public class PlayerListeners implements Listener {
             player.sendMessage("§8§m----------------------------------------");
             player.sendMessage("§7Bienvenue sur §c§lSmash");
             player.sendMessage("");
-            player.sendMessage("§fTu es actuellement dans la §cphase de d'attente§f de lancement.");
-            player.sendMessage("§fNous éspérons que tu iras jusqu'au bout de cette aventure !");
-            player.sendMessage("");
-            player.sendMessage("§7(Si tu es bloqué dans le spawn, tu peux utiliser §6§l/§espawn §7!)");
+            player.sendMessage("§fClick sur le panneau pour jouer au jeu.");
+            player.sendMessage("§7Tu peux aussi utiliser §6§l/§espawn §7!)");
             player.sendMessage("§8§m----------------------------------------");
             player.setGameMode(GameMode.ADVENTURE);
-            player.setHealth(20);
             player.playSound(player.getLocation(), Sound.BLOCK_NOTE_PLING, 1, 1);
             player.getInventory().clear();
             player.setExp(0);
             player.setLevel(2023);
             player.teleport(GameSettings.spawn);
             player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_LARGE_BLAST, 1, 1);
-
-            WorldBorder worldBorder = Bukkit.getWorld("world").getWorldBorder();
-            worldBorder.setSize(999999999);
         }
     }
 

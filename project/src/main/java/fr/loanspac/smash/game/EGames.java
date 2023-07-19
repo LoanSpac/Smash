@@ -1,13 +1,5 @@
 package fr.loanspac.smash.game;
 
-/*
- * Nom de classe : EGames
- * Description   : List of games
- * Version       : 1.0
- * Date          : 04/04/2023
- * Copyright     : LoanSpac
- */
-
 public enum EGames {
     ///////////////////////GAME ENUMERATION///////////////////////
     WAITING("En attente", -1),

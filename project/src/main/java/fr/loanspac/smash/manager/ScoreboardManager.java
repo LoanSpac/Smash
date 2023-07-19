@@ -9,14 +9,6 @@ import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 
-/*
- * Nom de classe : ScoreboardManager
- * Description   : Manager class
- * Version       : 1.0
- * Date          : 04/04/2023
- * Copyright     : LoanSpac
- */
-
 public class ScoreboardManager {
 
     private static FastBoard board;
@@ -50,7 +42,7 @@ public class ScoreboardManager {
                     "§7§m------------------", // Empty line
                     "§8■ §fStatus §7➢ §cEn Jeu",
                     "",
-                    "§8■ §fPourcentage §7➢ §6" + Smash.percentage.getOrDefault(player, 0d),
+                    "§8■ §fPourcentage §7➢ §6" + Smash.player.get(player).getPercent(),
                     "",
                     "§8■ §fTemps §7➢ §3" + Time.convert(time),
                     "",

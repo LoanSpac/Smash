@@ -2,6 +2,7 @@ package fr.loanspac.smash.guis;
 
 import fr.loanspac.smash.Smash;
 import fr.loanspac.smash.champion.bario.Bario;
+import fr.loanspac.smash.champion.marte.Marte;
 import fr.loanspac.smash.heads.ChampionHeads;
 import fr.loanspac.smash.team.Team;
 import org.bukkit.Bukkit;
@@ -103,10 +104,12 @@ public class WaitGUI {
 
             for(String name : names) {
                 if(current.getItemMeta().getDisplayName().equalsIgnoreCase(name)) {
-                    Smash.champion.put(player, new Bario());
-                    Smash.weight.put(player, 1d);
-                    //Smash.weight.put(player, 0.8d);   //léger
-                    //Smash.weight.put(player, 1.2d);   //lourd
+                    if(name.equals("Bario")) {
+                        Smash.champion.put(player, new Bario());
+                    }
+                    if(name.equals("Marte")) {
+                        Smash.champion.put(player, new Marte());
+                    }
                 }
             }
             player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);

@@ -9,14 +9,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-/*
- * Nom de classe : StartCommand
- * Description   : Start Game class
- * Version       : 1.0
- * Date          : 26/03/2023
- * Copyright     : HepickStudio
- */
-
 public class StartCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String s, String[] args) {
