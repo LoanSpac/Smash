@@ -15,6 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class WaitGUI {
+/*
     public void GUI(Player player, ItemStack it, Action action) {
 
         boolean rightClick = (action.equals(Action.RIGHT_CLICK_AIR) || action.equals(Action.RIGHT_CLICK_BLOCK));
@@ -115,4 +116,6 @@ public class WaitGUI {
             player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
         }
     }
+
+ */
 }

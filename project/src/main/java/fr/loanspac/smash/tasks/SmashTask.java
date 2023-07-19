@@ -26,10 +26,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
+public class SmashTask {
+/*
 public class SmashTask extends BukkitRunnable implements Listener {
+    /*
     public static int time = 0;
     private static final List<Player> inPVP = new ArrayList<>();
-    public static ArrayList<Player> alives = new ArrayList<>();
+    public static final List<Player> alives = new ArrayList<>();
 
     public static List<Player> getInPVP() {
         return inPVP;
@@ -46,7 +49,7 @@ public class SmashTask extends BukkitRunnable implements Listener {
             champ = new Bario();
             Smash.champion.put(player, new Bario());
         }
-        player.getInventory().setArmorContents(champ.getArmor(player));
+        player.getInventory().setArmorContents(champ.getArmorContent(player));
         List<Integer> item = new ArrayList<>();
         item.add(1);
         item.add(2);
@@ -181,4 +184,6 @@ public class SmashTask extends BukkitRunnable implements Listener {
         }
         time++;
     }
+
+     */
 }

@@ -18,7 +18,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class RegisterManager {
-    Smash main = Smash.getInstance();
+    /*
+    Smash main = Smash.instance();
 
     private List<Listener> listeners = new ArrayList<>();
 
@@ -38,4 +39,6 @@ public class RegisterManager {
             Bukkit.getPluginManager().registerEvents(listener, main);
         }));
     }
+
+     */
 }

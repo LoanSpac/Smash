@@ -9,7 +9,10 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+public class StartCommand {
+    /*
 public class StartCommand implements CommandExecutor {
+    /*
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String s, String[] args) {
         if (sender instanceof Player) {
@@ -18,7 +21,7 @@ public class StartCommand implements CommandExecutor {
                     sender.sendMessage(ChatColor.YELLOW + "Démarrage..");
                     EGames.setState(EGames.SMASH);
                     SmashTask pvpTask = new SmashTask();
-                    pvpTask.runTaskTimer(Smash.getInstance(), 0, 20);
+                    pvpTask.runTaskTimer(Smash.instance(), 0, 20);
                     return true;
                 }
                 return false;
@@ -27,4 +30,6 @@ public class StartCommand implements CommandExecutor {
         }
         return false;
     }
+
+     */
 }

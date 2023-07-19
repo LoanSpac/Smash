@@ -1,6 +1,9 @@
 package fr.loanspac.smash.champion.bario;
 
 import fr.loanspac.smash.champion.Champion;
+import fr.loanspac.smash.champion.ChampionSpellType;
+import fr.loanspac.smash.champion.ChampionType;
+import fr.loanspac.smash.champion.bario.spell.BarioOffensiveSpell;
 import fr.loanspac.smash.champion.bario.spell.BarioSpell;
 import fr.loanspac.smash.utils.ItemManager;
 import fr.loanspac.smash.utils.Skull;
@@ -13,33 +16,31 @@ import java.util.List;
 
 public class Bario extends Champion {
 
-    @Override
-    public String name() {
-        return "Bario";
+    public Bario() {
+        super(ChampionType.BARIO);
     }
 
     @Override
-    public Double getWeight() {
-        return 1d;
+    public ItemStack getMainHandItem() {
+        return null;
     }
 
     @Override
-    public ItemStack[] getArmor(Player player) {
+    protected void loadSpells() {
+        spells.put(ChampionSpellType.OFFENSIVE, new BarioOffensiveSpell());
+    }
+
+    @Override
+    public ItemStack[] getArmorContents() {
         ItemStack helmet = Skull.getSkull("§bBario", "http://textures.minecraft.net/texture/d70d3ece62a3b12344c4b1304a839c692ddde3370bc76a38fc0cca79ec5f2ab8");
-        ItemStack chesplate = ItemManager.getArmor(Material.LEATHER_CHESTPLATE, "§bTunique de Bario", 213,6,6);
+        ItemStack chestplate = ItemManager.getArmor(Material.LEATHER_CHESTPLATE, "§bTunique de Bario", 213,6,6);
         ItemStack leggings = ItemManager.getArmor(Material.LEATHER_LEGGINGS, "§bPantalon de Bario", 150,6,6);
         ItemStack boots = ItemManager.getArmor(Material.LEATHER_BOOTS, "§bBottes de Bario", 60,99,166);
 
-        ItemStack[] armorContents = new ItemStack[4];
-
-        armorContents[3] = helmet;
-        armorContents[2] = chesplate;
-        armorContents[1] = leggings;
-        armorContents[0] = boots;
-
-        return armorContents;
+        return new ItemStack[] { helmet, chestplate, leggings, boots };
     }
 
+    /*
     @Override
     public List<ItemStack> getItems(Player player) {
         ItemStack offensif = ItemManager.getItem(Material.FIREBALL, "§dBoule de feu", true);
@@ -57,28 +58,6 @@ public class Bario extends Champion {
         return items;
     }
 
-    @Override
-    public ItemStack getMainItem(Player player) {
-        return null;
-    }
+     */
 
-    @Override
-    public void setOffensif(Player player, ItemStack item) {
-        new BarioSpell().offensif(player, item);
-    }
-
-    @Override
-    public void setDefensif(Player player, ItemStack item) {
-        new BarioSpell().defensif(player, item);
-    }
-
-    @Override
-    public void setRecovery(Player player, ItemStack item) {
-        new BarioSpell().recovery(player, item);
-    }
-
-    @Override
-    public void setPassif(Player player) {
-        new BarioSpell().passif(player);
-    }
 }

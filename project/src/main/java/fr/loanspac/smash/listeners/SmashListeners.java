@@ -25,11 +25,12 @@ public class SmashListeners implements Listener  {
     HandlerList.unregisterAll(this); -> Permet d'enregister/désenregister un listener (on/off)
      */
 
+    /*
     @EventHandler
     public void onJump(PlayerToggleFlightEvent event) {
         if(!(EGames.getCurrentState().equals(EGames.SMASH))) return;
         Player player = event.getPlayer();
-        new RepeatingTask(Smash.getInstance(), 0, 1) {
+        new RepeatingTask(Smash.instance(), 0, 1) {
 
             int ticks = 0;
             @Override
@@ -141,5 +142,7 @@ public class SmashListeners implements Listener  {
         if(!(EGames.getCurrentState().equals(EGames.SMASH))) return;
         event.setDamage(0);
     }
+
+     */
 
 }

@@ -1,19 +1,5 @@
 package fr.loanspac.smash.champion.marte.spell;
 
-public class MarteSpell {
-    public void offensif() {
+public class MarteSpell  {
 
-    }
-
-    public void defensif() {
-
-    }
-
-    public void recovery() {
-
-    }
-
-    public void passif() {
-
-    }
 }

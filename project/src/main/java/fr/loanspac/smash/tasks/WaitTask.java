@@ -15,6 +15,9 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
+public class WaitTask {
+    /*
+
 public class WaitTask extends BukkitRunnable implements Listener {
     private static int counter = 20;
 
@@ -26,7 +29,7 @@ public class WaitTask extends BukkitRunnable implements Listener {
             player.setWalkSpeed(0.2f);
             player.setMaxHealth(20);
             player.setHealth(20);
-            player.showPlayer(Smash.getInstance(), player);
+            player.showPlayer(Smash.instance(), player);
             player.setGlowing(false);
             if(!(player.getGameMode().equals(GameMode.ADVENTURE))){
                 player.setGameMode(GameMode.ADVENTURE);
@@ -70,7 +73,7 @@ public class WaitTask extends BukkitRunnable implements Listener {
         if (counter == 0) { // Lancement du jeu
             EGames.setState(EGames.SMASH);
             SmashTask smashTask = new SmashTask();
-            smashTask.runTaskTimer(Smash.getInstance(), 0, 20);
+            smashTask.runTaskTimer(Smash.instance(), 0, 20);
             cancel();
         }
 
@@ -81,4 +84,6 @@ public class WaitTask extends BukkitRunnable implements Listener {
             Bukkit.broadcastMessage("En attente de joueur..");
         }
     }
+
+     */
 }

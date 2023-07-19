@@ -12,6 +12,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class PlayerListeners implements Listener {
+    /*
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
@@ -51,4 +52,6 @@ public class PlayerListeners implements Listener {
         Player player = event.getPlayer();
         event.setFormat(player.getName() + " §8§l» §7" + event.getMessage());
     }
+
+     */
 }
