@@ -1,7 +1,9 @@
 package fr.loanspac.smash.listeners;
 
 import fr.loanspac.smash.Smash;
-import fr.loanspac.smash.champion.Champion;
+import fr.loanspac.smash.champion.ChampionActiveSpell;
+import fr.loanspac.smash.champion.ChampionSpell;
+import fr.loanspac.smash.champion.ChampionSpellType;
 import fr.loanspac.smash.game.EGames;
 import fr.loanspac.smash.utils.RepeatingTask;
 import org.bukkit.Sound;
@@ -15,8 +17,8 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
 public class SmashListeners implements Listener  {
@@ -25,7 +27,6 @@ public class SmashListeners implements Listener  {
     HandlerList.unregisterAll(this); -> Permet d'enregister/désenregister un listener (on/off)
      */
 
-    /*
     @EventHandler
     public void onJump(PlayerToggleFlightEvent event) {
         if(!(EGames.getCurrentState().equals(EGames.SMASH))) return;
@@ -63,6 +64,7 @@ public class SmashListeners implements Listener  {
         if(action.equals(Action.LEFT_CLICK_AIR) || action.equals(Action.LEFT_CLICK_BLOCK)) player.getInventory().setHeldItemSlot(0);
     }
 
+    /*
     @EventHandler
     public void setSpell(PlayerInteractEvent event) {
         if(!(EGames.getCurrentState().equals(EGames.SMASH))) return;
@@ -87,6 +89,23 @@ public class SmashListeners implements Listener  {
                     break;
             }
         }
+    }
+     */
+
+    @EventHandler
+    public void onHeldSwitch(PlayerItemHeldEvent event) {
+        if(!(EGames.getCurrentState().equals(EGames.SMASH))) return;
+        Player player = event.getPlayer();
+
+        if (event.getNewSlot() == 1) {
+            ChampionSpell spell = Smash.instance().getChampionDistributor().getSpellOfPlayer(player, ChampionSpellType.OFFENSIVE);
+            if (spell instanceof ChampionActiveSpell) {
+                ChampionActiveSpell activeSpell = (ChampionActiveSpell) spell;
+                activeSpell.play(player);
+            }
+        }
+
+        event.setCancelled(true);
     }
 
     @EventHandler
@@ -142,7 +161,5 @@ public class SmashListeners implements Listener  {
         if(!(EGames.getCurrentState().equals(EGames.SMASH))) return;
         event.setDamage(0);
     }
-
-     */
 
 }

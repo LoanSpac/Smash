@@ -10,7 +10,6 @@ import org.bukkit.entity.Player;
 import java.util.HashMap;
 
 public class ScoreboardManager {
-    /*
 
     private static FastBoard board;
     private static HashMap<Player, FastBoard> boards = new HashMap<>();
@@ -57,6 +56,4 @@ public class ScoreboardManager {
     public static FastBoard getScoreboard(Player player){
         return boards.get(player);
     }
-
-     */
 }

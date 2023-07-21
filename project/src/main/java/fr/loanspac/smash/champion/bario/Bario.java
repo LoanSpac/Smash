@@ -4,15 +4,10 @@ import fr.loanspac.smash.champion.Champion;
 import fr.loanspac.smash.champion.ChampionSpellType;
 import fr.loanspac.smash.champion.ChampionType;
 import fr.loanspac.smash.champion.bario.spell.BarioOffensiveSpell;
-import fr.loanspac.smash.champion.bario.spell.BarioSpell;
 import fr.loanspac.smash.utils.ItemManager;
 import fr.loanspac.smash.utils.Skull;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Bario extends Champion {
 
@@ -21,13 +16,13 @@ public class Bario extends Champion {
     }
 
     @Override
-    public ItemStack getMainHandItem() {
-        return null;
+    protected void loadSpells() {
+        spells.put(ChampionSpellType.OFFENSIVE, new BarioOffensiveSpell());
     }
 
     @Override
-    protected void loadSpells() {
-        spells.put(ChampionSpellType.OFFENSIVE, new BarioOffensiveSpell());
+    public ItemStack getMainHandItem() {
+        return null;
     }
 
     @Override
@@ -37,7 +32,7 @@ public class Bario extends Champion {
         ItemStack leggings = ItemManager.getArmor(Material.LEATHER_LEGGINGS, "§bPantalon de Bario", 150,6,6);
         ItemStack boots = ItemManager.getArmor(Material.LEATHER_BOOTS, "§bBottes de Bario", 60,99,166);
 
-        return new ItemStack[] { helmet, chestplate, leggings, boots };
+        return new ItemStack[] { boots, leggings, chestplate, helmet };
     }
 
     /*

@@ -18,7 +18,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public class WaitingListeners implements Listener {
-    /*
     @EventHandler
     public void onFireTick(EntityDamageEvent event){
         if(!(EGames.getCurrentState().equals(EGames.WAITING))) return;
@@ -40,7 +39,7 @@ public class WaitingListeners implements Listener {
         ItemStack item = event.getItem();
         Action action = event.getAction();
         if(item == null) return;
-        new WaitGUI().GUI(player, item, action);
+        new WaitGUI().renderGUI(player, item, action);
     }
 
     @EventHandler
@@ -50,7 +49,7 @@ public class WaitingListeners implements Listener {
         Inventory inv = event.getInventory();
         ItemStack current = event.getCurrentItem();
         if(current == null) return;
-        new WaitGUI().GUIClick(player, current, inv);
+        new WaitGUI().clickGUI(player, current, inv);
     }
 
     @EventHandler
@@ -71,6 +70,4 @@ public class WaitingListeners implements Listener {
 
         player.updateInventory();
     }
-
-     */
 }

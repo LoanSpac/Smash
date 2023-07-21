@@ -15,9 +15,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class WaitTask {
-    /*
-
 public class WaitTask extends BukkitRunnable implements Listener {
     private static int counter = 20;
 
@@ -84,6 +81,4 @@ public class WaitTask extends BukkitRunnable implements Listener {
             Bukkit.broadcastMessage("En attente de joueur..");
         }
     }
-
-     */
 }

@@ -3,7 +3,6 @@ package fr.loanspac.smash.manager;
 import fr.loanspac.smash.Smash;
 import fr.loanspac.smash.commands.PlayerCommand;
 import fr.loanspac.smash.commands.StaffCommand;
-import fr.loanspac.smash.commands.StartCommand;
 import fr.loanspac.smash.listeners.GlobalListeners;
 import fr.loanspac.smash.listeners.PlayerListeners;
 import fr.loanspac.smash.listeners.SmashListeners;
@@ -18,7 +17,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class RegisterManager {
-    /*
     Smash main = Smash.instance();
 
     private List<Listener> listeners = new ArrayList<>();
@@ -26,7 +24,6 @@ public class RegisterManager {
     public void registration(){
 
         Objects.requireNonNull(main.getCommand("spawn")).setExecutor(new PlayerCommand());
-        Objects.requireNonNull(main.getCommand("start")).setExecutor(new StartCommand());
         Objects.requireNonNull(main.getCommand("staff")).setExecutor(new StaffCommand());
 
         this.listeners.add(new PlayerListeners());
@@ -39,6 +36,4 @@ public class RegisterManager {
             Bukkit.getPluginManager().registerEvents(listener, main);
         }));
     }
-
-     */
 }

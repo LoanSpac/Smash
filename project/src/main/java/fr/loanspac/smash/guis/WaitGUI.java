@@ -1,9 +1,10 @@
 package fr.loanspac.smash.guis;
 
 import fr.loanspac.smash.Smash;
+import fr.loanspac.smash.champion.ChampionType;
 import fr.loanspac.smash.champion.bario.Bario;
 import fr.loanspac.smash.champion.marte.Marte;
-import fr.loanspac.smash.heads.ChampionHeads;
+import fr.loanspac.smash.guis.button.ChampionButtonGUI;
 import fr.loanspac.smash.team.Team;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -15,8 +16,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class WaitGUI {
-/*
-    public void GUI(Player player, ItemStack it, Action action) {
+    public void renderGUI(Player player, ItemStack it, Action action) {
 
         boolean rightClick = (action.equals(Action.RIGHT_CLICK_AIR) || action.equals(Action.RIGHT_CLICK_BLOCK));
 
@@ -28,14 +28,15 @@ public class WaitGUI {
             grayGlassMeta.setDisplayName(" ");
             grayGlass.setItemMeta(grayGlassMeta);
 
-            String[] names = {"Bario", "Marte", "Pakichu", "Kirpy", "Lynk", "Bowzer", "Sonyc", "Foks", "Waryo"};
+            String[] names = {"Bario", "Marte"/*, "Pakichu", "Kirpy", "Lynk", "Bowzer", "Sonyc", "Foks", "Waryo"*/};
 
             for(int i = 0; i < 54; i++) {
                 if(i < 9) {
                     inv.setItem(i, grayGlass);
                 }
                 if(i > 8 && i < 18) {
-                    inv.setItem(i, new ChampionHeads().headOf(names[i-9]));
+                    //inv.setItem(i, new ChampionHeads().headOf(names[i-9]));
+                    inv.setItem(i, new ChampionButtonGUI(ChampionType.valueOf(names[i-9])).render());
                 }
                 if(i > 44) {
                     inv.setItem(i, grayGlass);
@@ -85,7 +86,7 @@ public class WaitGUI {
         }
     }
 
-    public void GUIClick(Player player, ItemStack current, Inventory inv) {
+    public void clickGUI(Player player, ItemStack current, Inventory inv) {
         if(inv.getName().equalsIgnoreCase("§8Team")) {
             if(current.getItemMeta().getDisplayName().equalsIgnoreCase("§1Blue Team")) {
                 Smash.team.replace(player, Team.BLUE);
@@ -107,15 +108,15 @@ public class WaitGUI {
                 if(current.getItemMeta().getDisplayName().equalsIgnoreCase(name)) {
                     if(name.equals("Bario")) {
                         Smash.champion.put(player, new Bario());
+                        Smash.instance().getChampionDistributor().applyChampion(player, ChampionType.BARIO);
                     }
                     if(name.equals("Marte")) {
                         Smash.champion.put(player, new Marte());
+                        Smash.instance().getChampionDistributor().applyChampion(player, ChampionType.MARTE);
                     }
                 }
             }
             player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
         }
     }
-
- */
 }

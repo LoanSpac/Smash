@@ -1,6 +1,5 @@
 package fr.loanspac.smash.champion;
 
-import fr.loanspac.smash.champion.bario.spell.BarioOffensiveSpell;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;

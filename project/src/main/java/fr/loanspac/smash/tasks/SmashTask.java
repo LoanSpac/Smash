@@ -26,13 +26,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
-public class SmashTask {
-/*
 public class SmashTask extends BukkitRunnable implements Listener {
-    /*
     public static int time = 0;
     private static final List<Player> inPVP = new ArrayList<>();
-    public static final List<Player> alives = new ArrayList<>();
+    public static ArrayList<Player> alives = new ArrayList<>();
 
     public static List<Player> getInPVP() {
         return inPVP;
@@ -49,7 +46,8 @@ public class SmashTask extends BukkitRunnable implements Listener {
             champ = new Bario();
             Smash.champion.put(player, new Bario());
         }
-        player.getInventory().setArmorContents(champ.getArmorContent(player));
+        player.getInventory().setArmorContents(champ.getArmorContents());
+        /*
         List<Integer> item = new ArrayList<>();
         item.add(1);
         item.add(2);
@@ -58,13 +56,14 @@ public class SmashTask extends BukkitRunnable implements Listener {
         for(Integer i : item) {
             player.getInventory().setItem(i, champ.getItems(player).get(item.indexOf(i)));
         }
-        player.getInventory().setItem(0, Objects.requireNonNull(champ.getMainItem(player)));
+        */
+        if(!(champ.getMainHandItem() == null)) player.getInventory().setItem(0, champ.getMainHandItem());
     }
 
     public static void effectPlayer(Player player) {
         player.getActivePotionEffects().clear();
         Champion champ = Smash.champion.get(player);
-        champ.setPassif(player);
+        //champ.setPassif(player);
     }
 
     private static void teleportPlayers(List<Player> players) {
@@ -136,7 +135,7 @@ public class SmashTask extends BukkitRunnable implements Listener {
                 }
                 teleportPlayers(alives);
                 equipPlayer(players);
-                effectPlayer(players);
+                //effectPlayer(players);
                 players.setAllowFlight(true);
                 players.setMaxHealth(6);
                 Smash.player.put(players, new SmashPlayer());
@@ -184,6 +183,4 @@ public class SmashTask extends BukkitRunnable implements Listener {
         }
         time++;
     }
-
-     */
 }
