@@ -28,17 +28,12 @@ public class WaitGUI {
             grayGlassMeta.setDisplayName(" ");
             grayGlass.setItemMeta(grayGlassMeta);
 
-            String[] names = {"Bario", "Marte"/*, "Pakichu", "Kirpy", "Lynk", "Bowzer", "Sonyc", "Foks", "Waryo"*/};
+            ChampionType[] championTypes = ChampionType.values();
 
-            for(int i = 0; i < 54; i++) {
-                if(i < 9) {
-                    inv.setItem(i, grayGlass);
-                }
-                if(i > 8 && i < 18) {
-                    //inv.setItem(i, new ChampionHeads().headOf(names[i-9]));
-                    inv.setItem(i, new ChampionButtonGUI(ChampionType.valueOf(names[i-9])).render());
-                }
-                if(i > 44) {
+            for (int i = 0; i < inv.getSize(); i++) {
+                if (i > 9 && championTypes.length < i-9) {
+                    inv.setItem(i, new ChampionButtonGUI(championTypes[i-9]).render());
+                } else  {
                     inv.setItem(i, grayGlass);
                 }
             }
