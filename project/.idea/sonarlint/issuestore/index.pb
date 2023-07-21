@@ -15,14 +15,10 @@ t
 Dsrc/main/java/fr/loanspac/smash/champion/bario/spell/BarioSpell.java,a\2\a21917d778220e7e000bfc7c9e5357272fc0c011
 t
 Dsrc/main/java/fr/loanspac/smash/champion/marte/spell/MarteSpell.java,1\b\1b27e81292fbf092e1acd44ad5c7f61086d5b0cb
-c
-3src/main/java/fr/loanspac/smash/tasks/WaitTask.java,f\8\f8ce4a6e99fd4a1abd67f7f915aabe808287892a
 j
 :src/main/java/fr/loanspac/smash/commands/StaffCommand.java,1\2\1228ebe08141a71e42795c0c075509aa1599c937
 k
 ;src/main/java/fr/loanspac/smash/commands/PlayerCommand.java,e\2\e21b5f62512efdd178f32aa6b82e51a5d6041fff
-l
-<src/main/java/fr/loanspac/smash/manager/RegisterManager.java,7\f\7fd4bd6445de0da8f5809424c6c2b623842d1968
 i
 9src/main/java/fr/loanspac/smash/champion/marte/Marte.java,9\8\98a1eed7df982e8623b466aa6710cbf167e5350c
 f
