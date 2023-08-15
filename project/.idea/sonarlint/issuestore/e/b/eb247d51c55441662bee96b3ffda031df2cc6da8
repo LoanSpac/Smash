@@ -1,0 +1,23 @@
+
+ˆ
+java:S1319$"fThe type of "alives" should be an interface such as "List" rather than the implementation "ArrayList".(‚šš§ùÿÿÿÿ8’øÎªŸ1
+l
+java:S1104""PMake time a static final constant or non-public and provide accessors if needed.(è©™G8’øÎªŸ1
+t
+java:S1104$"RMake alives a static final constant or non-public and provide accessors if needed.(‚šš§ùÿÿÿÿ8“øÎªŸ1
+F
+java:S1444""*Make this "public static time" field final(è©™G8“øÎªŸ1
+N
+java:S1444$",Make this "public static alives" field final(‚šš§ùÿÿÿÿ8“øÎªŸ1
+?
+java:S2386$"Make this member "protected".(‚šš§ùÿÿÿÿ8ºùÎªŸ1
+p
+java:S3776ƒ"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(“–ýþ8ÅùÎªŸ1
+Y	java:S125–"<This block of commented-out lines of code should be removed.(¨“×ª8ÇùÎªŸ1
+W
+java:S1874ž"4Remove this use of "setMaxHealth"; it is deprecated.(ØÁ°ýÿÿÿÿ8ÇùÎªŸ1
+Y	java:S125¢"<This block of commented-out lines of code should be removed.(èÓÛ¡8ÈùÎªŸ1
+?
+java:S3864Á"!Remove this use of "Stream.peek".(Šúÿ8ÊùÎªŸ1
+Y
+java:S2696Ê"6Make the enclosing method "static" or remove this set.(õŸ£úÿÿÿÿ8ÌùÎªŸ1

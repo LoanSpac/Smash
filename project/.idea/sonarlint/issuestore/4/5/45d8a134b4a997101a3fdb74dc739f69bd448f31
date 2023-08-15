@@ -1,0 +1,27 @@
+
+r
+java:S1192"\Define a constant instead of duplicating this literal "===========================" 4 times.(°éß–
+m
+java:S1104"RMake player a static final constant or non-public and provide accessors if needed.(‡‘þ×üÿÿÿÿ
+f
+java:S1104"PMake team a static final constant or non-public and provide accessors if needed.(û¹Ó›
+o
+java:S1104"TMake champion a static final constant or non-public and provide accessors if needed.(®Å›¡úÿÿÿÿ
+G
+java:S1444",Make this "public static player" field final(‡‘þ×üÿÿÿÿ
+@
+java:S1444"*Make this "public static team" field final(û¹Ó›
+I
+java:S1444".Make this "public static champion" field final(®Å›¡úÿÿÿÿ
+p
+java:S3008"SRename this field "INSTANCE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶¹‘½8’Ç¿ —1
+8
+java:S2386"Make this member "protected".(‡‘þ×üÿÿÿÿ
+3
+java:S2386"Make this member "protected".(û¹Ó›
+8
+java:S2386"Make this member "protected".(®Å›¡úÿÿÿÿ
+»
+java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(õžÝÿüÿÿÿÿ8ùß€¢—1
+X
+java:S2696"6Make the enclosing method "static" or remove this set.(Æ‰©’ûÿÿÿÿ8‚à€¢—1
