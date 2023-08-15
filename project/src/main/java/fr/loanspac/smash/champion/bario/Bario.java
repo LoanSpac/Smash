@@ -1,6 +1,8 @@
 package fr.loanspac.smash.champion.bario;
 
 import fr.loanspac.smash.champion.Champion;
+import fr.loanspac.smash.champion.ChampionHeadType;
+import fr.loanspac.smash.champion.ChampionType;
 import fr.loanspac.smash.champion.bario.spell.BarioSpell;
 import fr.loanspac.smash.utils.ItemManager;
 import fr.loanspac.smash.utils.Skull;
@@ -12,40 +14,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bario extends Champion {
+    private BarioSpell spell = new BarioSpell();
+
+    public Bario() {
+        super(ChampionType.BARIO);
+    }
+
+    /*
+    @Override
+    protected void loadSpells() {
+        spells.put(ChampionSpellType.OFFENSIVE, new BarioOffensiveSpell());
+    }
+     */
 
     @Override
-    public String name() {
-        return "Bario";
+    public ItemStack getMainHandItem() {
+        return null;
     }
 
     @Override
-    public Double getWeight() {
-        return 1d;
+    public ItemStack[] getArmorContents() {
+        ItemStack helmet = ChampionHeadType.BARIO.getHead();
+        ItemStack chestplate = ItemManager.getArmor(Material.LEATHER_CHESTPLATE, "§bTunique de Bario", 6,6,213);
+        ItemStack leggings = ItemManager.getArmor(Material.LEATHER_LEGGINGS, "§bPantalon de Bario", 6,6,150);
+        ItemStack boots = ItemManager.getArmor(Material.LEATHER_BOOTS, "§bBottes de Bario", 79, 52, 23);
+
+        return new ItemStack[] { boots, leggings, chestplate, helmet };
     }
 
     @Override
-    public ItemStack[] getArmor(Player player) {
-        ItemStack helmet = Skull.getSkull("§bBario", "http://textures.minecraft.net/texture/d70d3ece62a3b12344c4b1304a839c692ddde3370bc76a38fc0cca79ec5f2ab8");
-        ItemStack chesplate = ItemManager.getArmor(Material.LEATHER_CHESTPLATE, "§bTunique de Bario", 213,6,6);
-        ItemStack leggings = ItemManager.getArmor(Material.LEATHER_LEGGINGS, "§bPantalon de Bario", 150,6,6);
-        ItemStack boots = ItemManager.getArmor(Material.LEATHER_BOOTS, "§bBottes de Bario", 60,99,166);
-
-        ItemStack[] armorContents = new ItemStack[4];
-
-        armorContents[3] = helmet;
-        armorContents[2] = chesplate;
-        armorContents[1] = leggings;
-        armorContents[0] = boots;
-
-        return armorContents;
-    }
-
-    @Override
-    public List<ItemStack> getItems(Player player) {
-        ItemStack offensif = ItemManager.getItem(Material.FIREBALL, "§dBoule de feu", true);
-        ItemStack defensif = Skull.getSkull("§bSuper Champignon", "http://textures.minecraft.net/texture/ff96b8d01f5835ed38afd4530228d0b5abb7d45a355519ea680c40ffca32edf2");
-        ItemStack recovery = ItemManager.getItem(Material.FEATHER, "§d360 Jump", true);
-        ItemStack passif = ItemManager.getItem(Material.SUGAR, "§dSpeed", false);
+    public List<ItemStack> getSpells() {
+        ItemStack offensif = ItemManager.getItem(Material.FIREBALL, "§dBoule de feu", true, false);
+        ItemStack defensif = Skull.getSkull("§dSuper Champignon", "http://textures.minecraft.net/texture/ff96b8d01f5835ed38afd4530228d0b5abb7d45a355519ea680c40ffca32edf2");
+        ItemStack recovery = ItemManager.getItem(Material.FEATHER, "§d360 Jump", true, false);
+        ItemStack passif = ItemManager.getItem(Material.SUGAR, "§dSpeed", false, false);
 
         ArrayList<ItemStack> items = new ArrayList<>();
 
@@ -58,27 +60,23 @@ public class Bario extends Champion {
     }
 
     @Override
-    public ItemStack getMainItem(Player player) {
-        return null;
+    public void applyOffensif(Player player, ItemStack item) {
+        spell.offensif(player, item);
     }
 
     @Override
-    public void setOffensif(Player player, ItemStack item) {
-        new BarioSpell().offensif(player, item);
+    public void applyUtilitaire(Player player, ItemStack item) {
+        spell.utilitaire(player, item);
     }
 
     @Override
-    public void setDefensif(Player player, ItemStack item) {
-        new BarioSpell().defensif(player, item);
+    public void applyRecovery(Player player, ItemStack item) {
+        spell.recovery(player, item);
     }
 
     @Override
-    public void setRecovery(Player player, ItemStack item) {
-        new BarioSpell().recovery(player, item);
+    public void applyPassif(Player player) {
+        spell.passif(player);
     }
 
-    @Override
-    public void setPassif(Player player) {
-        new BarioSpell().passif(player);
-    }
 }

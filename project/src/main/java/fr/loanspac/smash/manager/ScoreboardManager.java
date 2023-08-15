@@ -8,15 +8,16 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class ScoreboardManager {
 
     private static FastBoard board;
-    private static HashMap<Player, FastBoard> boards = new HashMap<>();
+    private static Map<Player, FastBoard> boards = new HashMap<>();
 
     public static void createScoreboard(Player player){
         boards.put(player, new FastBoard(player));
-        boards.get(player).updateTitle("§c§nSmash");
+        //boards.get(player).updateTitle("§c§nSmash");
     }
 
     public static void deleteScoreboard(Player player){
@@ -28,7 +29,7 @@ public class ScoreboardManager {
         if (EGames.getCurrentState() == EGames.WAITING) {
             boards.get(player).updateTitle("§c§nSmash");
             boards.get(player).updateLines(
-                    "§7§m------------------", // Empty line
+                    "§7§m------------------",
                     "§8■ §fStatus §7➢ §cEn attente...",
                     "",
                     "§8■ §fJoueurs §7➢ §e" + Bukkit.getOnlinePlayers().size(),
@@ -39,8 +40,10 @@ public class ScoreboardManager {
         if (EGames.getCurrentState() == EGames.SMASH) {
             boards.get(player).updateTitle("§c§nSmash");
             boards.get(player).updateLines(
-                    "§7§m------------------", // Empty line
+                    "§7§m------------------",
                     "§8■ §fStatus §7➢ §cEn Jeu",
+                    "",
+                    "§8■ §fChampion §7➢ §d"/* + Smash.champion.get(player).getName()*/,
                     "",
                     "§8■ §fPourcentage §7➢ §6" + Smash.player.get(player).getPercent(),
                     "",
@@ -53,7 +56,7 @@ public class ScoreboardManager {
         }
     }
 
-    public static FastBoard getScoreboard(Player player){
-        return boards.get(player);
-    }
+    //public static FastBoard getScoreboard(Player player){
+    //    return boards.get(player);
+    //}
 }

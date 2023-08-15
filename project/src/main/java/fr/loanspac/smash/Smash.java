@@ -1,6 +1,7 @@
 package fr.loanspac.smash;
 
 import fr.loanspac.smash.champion.Champion;
+import fr.loanspac.smash.champion.ChampionDistributor;
 import fr.loanspac.smash.game.EGames;
 import fr.loanspac.smash.game.player.SmashPlayer;
 import fr.loanspac.smash.manager.RegisterManager;
@@ -11,21 +12,26 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public final class Smash extends JavaPlugin {
-    private static Smash instance;
-    public static HashMap<Player, SmashPlayer> player = new HashMap<>();
-    public static HashMap<Player, Team> team = new HashMap<>();
-    public static HashMap<Player, Champion> champion = new HashMap<>();
+    private static Smash INSTANCE;
+    private ChampionDistributor championDistributor;
+
+
+    public static Map<Player, SmashPlayer> player = new HashMap<>();
+    public static Map<Player, Team> team = new HashMap<>();
+    public static Map<Player, Champion> champion = new HashMap<>();
 
     ///////////// Activation /////////////
     @Override
     public void onEnable() {
-        instance = this;
-
+        INSTANCE = this;
         Bukkit.getLogger().info("===========================");
         Bukkit.getLogger().info("Enable Smash 1.0");
         Bukkit.getLogger().info("===========================");
+
+        this.championDistributor = new ChampionDistributor();
 
         EGames.setState(EGames.WAITING);
         RegisterManager registrationManager = new RegisterManager();
@@ -44,7 +50,11 @@ public final class Smash extends JavaPlugin {
         Bukkit.getLogger().info("===========================");
     }
 
-    public static Smash getInstance() {
-        return instance;
+    public ChampionDistributor getChampionDistributor() {
+        return championDistributor;
+    }
+
+    public static Smash instance() {
+        return INSTANCE;
     }
 }

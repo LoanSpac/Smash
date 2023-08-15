@@ -9,14 +9,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-/*
- * Nom de classe : PlayerCommand
- * Description   : PlayerCMD class
- * Version       : 1.0
- * Date          : 04/04/2023
- * Copyright     : LoanSpac
- */
-
 public class PlayerCommand implements CommandExecutor  {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String s, String[] args) {

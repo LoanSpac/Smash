@@ -1,6 +1,7 @@
 package fr.loanspac.smash.tasks;
 
 import fr.loanspac.smash.Smash;
+import fr.loanspac.smash.champion.ChampionType;
 import fr.loanspac.smash.game.EGames;
 import fr.loanspac.smash.game.GameSettings;
 import fr.loanspac.smash.manager.ScoreboardManager;
@@ -15,18 +16,26 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public class WaitTask extends BukkitRunnable implements Listener {
+    public static Map<UUID, ChampionType> choice = new HashMap<>();
     private static int counter = 20;
 
     @EventHandler
     public static void onConnect(PlayerJoinEvent event){
         if(EGames.getCurrentState().equals(EGames.WAITING)) {
             Player player = event.getPlayer();
+            //player.getActivePotionEffects().clear();
+            player.removePotionEffect(PotionEffectType.SLOW);
             player.removePotionEffect(PotionEffectType.SPEED);
+            player.removePotionEffect(PotionEffectType.JUMP);
             player.setWalkSpeed(0.2f);
             player.setMaxHealth(20);
             player.setHealth(20);
-            player.showPlayer(Smash.getInstance(), player);
+            player.showPlayer(Smash.instance(), player);
             player.setGlowing(false);
             if(!(player.getGameMode().equals(GameMode.ADVENTURE))){
                 player.setGameMode(GameMode.ADVENTURE);
@@ -42,27 +51,27 @@ public class WaitTask extends BukkitRunnable implements Listener {
             ScoreboardManager.updateScoreboard(players, 0);
             switch(counter) {
                 case 10:
-                    players.sendTitle("§cAttention !", "§6Placez vous devant la ligne de départ !", 10, 20, 10);
+                    players.sendTitle("§cAttention", "§6La partie commence dans 10s..", 10, 20, 10);
                     break;
                 case 5:
-                    players.sendTitle("§95", "§bTenez vous prêt !", 10, 20, 10);
-                    players.playNote(players.getLocation(), Instrument.BASS_GUITAR, Note.natural(1, Note.Tone.E));
+                    players.sendTitle("§95", "", 10, 20, 10);
+                    players.playNote(players.getLocation(), Instrument.BELL, Note.natural(1, Note.Tone.E));
                     break;
                 case 4:
-                    players.sendTitle("§24", "§aPas de faux départs !", 10, 20, 10);
-                    players.playNote(players.getLocation(), Instrument.BASS_GUITAR, Note.natural(1, Note.Tone.D));
+                    players.sendTitle("§24", "", 10, 20, 10);
+                    players.playNote(players.getLocation(), Instrument.BELL, Note.natural(1, Note.Tone.D));
                     break;
                 case 3:
-                    players.sendTitle("§e3", "§6A vos marques", 10, 20, 10);
-                    players.playNote(players.getLocation(), Instrument.BASS_GUITAR, Note.natural(1, Note.Tone.C));
+                    players.sendTitle("§e3", "", 10, 20, 10);
+                    players.playNote(players.getLocation(), Instrument.BELL, Note.natural(1, Note.Tone.C));
                     break;
                 case 2:
-                    players.sendTitle("§62", "§ePrêt ?", 10, 20, 10);
-                    players.playNote(players.getLocation(), Instrument.BASS_GUITAR, Note.natural(1, Note.Tone.B));
+                    players.sendTitle("§62", "", 10, 20, 10);
+                    players.playNote(players.getLocation(), Instrument.BELL, Note.natural(1, Note.Tone.B));
                     break;
                 case 1:
-                    players.sendTitle("§c1", "§4C'est partie !", 10, 20, 10);
-                    players.playNote(players.getLocation(), Instrument.BASS_GUITAR, Note.natural(1, Note.Tone.A));
+                    players.sendTitle("§c1", "", 10, 20, 10);
+                    players.playNote(players.getLocation(), Instrument.BELL, Note.natural(1, Note.Tone.A));
                     break;
             }
         } /////////////////////////////////////////////////////////
@@ -70,7 +79,7 @@ public class WaitTask extends BukkitRunnable implements Listener {
         if (counter == 0) { // Lancement du jeu
             EGames.setState(EGames.SMASH);
             SmashTask smashTask = new SmashTask();
-            smashTask.runTaskTimer(Smash.getInstance(), 0, 20);
+            smashTask.runTaskTimer(Smash.instance(), 0, 20);
             cancel();
         }
 

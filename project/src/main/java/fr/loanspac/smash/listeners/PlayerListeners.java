@@ -49,6 +49,6 @@ public class PlayerListeners implements Listener {
     @EventHandler
     public void onChat(PlayerChatEvent event) {
         Player player = event.getPlayer();
-        event.setFormat(player.getName() + " §8§l» §7" + event.getMessage());
+        event.setFormat(player.getCustomName() + " §8§l» §7" + event.getMessage());
     }
 }

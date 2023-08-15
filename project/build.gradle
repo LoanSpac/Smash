@@ -53,4 +53,4 @@ processResources {
 }
 
 compileJava.options.encoding = 'UTF-8'
-setLibsDirName("C:\\Users\\Spac\\Desktop\\Smash\\plugins")
+setLibsDirName("C:\\Users\\Spac\\Desktop\\‎\\Projects\\Smash\\Serveur\\plugins")

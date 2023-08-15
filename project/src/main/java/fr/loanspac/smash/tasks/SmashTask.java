@@ -19,12 +19,16 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
+
+import static fr.loanspac.smash.Smash.player;
 
 public class SmashTask extends BukkitRunnable implements Listener {
     public static int time = 0;
@@ -46,22 +50,24 @@ public class SmashTask extends BukkitRunnable implements Listener {
             champ = new Bario();
             Smash.champion.put(player, new Bario());
         }
-        player.getInventory().setArmorContents(champ.getArmor(player));
+        player.getInventory().setArmorContents(champ.getArmorContents());
+
         List<Integer> item = new ArrayList<>();
         item.add(1);
         item.add(2);
         item.add(3);
         item.add(8);
         for(Integer i : item) {
-            player.getInventory().setItem(i, champ.getItems(player).get(item.indexOf(i)));
+            player.getInventory().setItem(i, champ.getSpells().get(item.indexOf(i)));
         }
-        player.getInventory().setItem(0, Objects.requireNonNull(champ.getMainItem(player)));
+
+        if(champ.getMainHandItem() != null) player.getInventory().setItem(0, champ.getMainHandItem());
     }
 
-    public static void effectPlayer(Player player) {
+    public static void enablePassif(Player player) {
         player.getActivePotionEffects().clear();
         Champion champ = Smash.champion.get(player);
-        champ.setPassif(player);
+        champ.applyPassif(player);
     }
 
     private static void teleportPlayers(List<Player> players) {
@@ -128,18 +134,32 @@ public class SmashTask extends BukkitRunnable implements Listener {
                 players.playSound(players.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
                 alives.add(players);
                 getInPVP().add(players);
+
                 if(Smash.team.get(players).equals(Team.NEUTRAL)) {
                     equalsTeam(players);
                 }
                 teleportPlayers(alives);
+                players.getInventory().clear();
+
+                players.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 0));
+                players.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, Integer.MAX_VALUE, 0));
+
                 equipPlayer(players);
-                effectPlayer(players);
+                enablePassif(players);
+
+                //System.out.println(new WaitTask().choice.get(players.getUniqueId()));
+                /*
+                if(!(WaitTask.choice.get(players.getUniqueId()).equals(null))) {
+                    new ChampionButtonGUI(WaitTask.choice.get(players.getUniqueId())).play(players);
+                }
+                */
+
                 players.setAllowFlight(true);
                 players.setMaxHealth(6);
-                Smash.player.put(players, new SmashPlayer());
-                Smash.player.get(players).setKbmod(1d);
-                Smash.player.get(players).setPercent(0d);
-                Smash.player.get(players).setWeight(Smash.champion.get(players).getWeight());
+                player.put(players, new SmashPlayer());
+                player.get(players).setKbmod(1d);
+                player.get(players).setPercent(0d);
+                //player.get(players).setWeight(Smash.champion.get(players).getWeight());
             }
             Bukkit.getWorld("world").setPVP(true);
         }

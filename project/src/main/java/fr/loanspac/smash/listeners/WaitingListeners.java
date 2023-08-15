@@ -39,17 +39,17 @@ public class WaitingListeners implements Listener {
         ItemStack item = event.getItem();
         Action action = event.getAction();
         if(item == null) return;
-        new WaitGUI().GUI(player, item, action);
+        new WaitGUI().renderGUI(player, item, action);
     }
 
     @EventHandler
-    public void onClick(InventoryClickEvent event) {
+    public void onClick(InventoryClickEvent event) throws InstantiationException, IllegalAccessException {
         if(!(EGames.getCurrentState().equals(EGames.WAITING))) return;
         Player player = (Player)event.getWhoClicked();
         Inventory inv = event.getInventory();
         ItemStack current = event.getCurrentItem();
         if(current == null) return;
-        new WaitGUI().GUIClick(player, current, inv);
+        new WaitGUI().clickGUI(player, current, inv);
     }
 
     @EventHandler
@@ -59,13 +59,13 @@ public class WaitingListeners implements Listener {
 
         Smash.team.put(player, Team.NEUTRAL);
 
-        ItemStack mainMenu = ItemManager.getItem(Material.NETHER_STAR, "§6Main", false);
+        ItemStack mainMenu = ItemManager.getItem(Material.NETHER_STAR, "§6Main", false, false);
         player.getInventory().setItem(0, mainMenu);
 
-        ItemStack team = ItemManager.getItem(Material.WOOL, "§6Team", false);
+        ItemStack team = ItemManager.getItem(Material.WOOL, "§6Team", false, false);
         player.getInventory().setItem(4, team);
 
-        ItemStack lobby = ItemManager.getItem(Material.DARK_OAK_DOOR_ITEM, "§4Retour Lobby", false);
+        ItemStack lobby = ItemManager.getItem(Material.DARK_OAK_DOOR_ITEM, "§4Retour Lobby", false, false);
         player.getInventory().setItem(8, lobby);
 
         player.updateInventory();
