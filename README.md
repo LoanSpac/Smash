@@ -1,13 +1,13 @@
 # [FR] Smash
-<h1 align="center">Smash by LoanSpac</h1>
+<h2 align="center">Smash by LoanSpac</h2>
 
 ### 🏠 [Homepage](https://github.com/LoanSpac/Smash)
 
 ## 📄 Infos
 
-Ce projet a été réalisé dans le but de pouvoir progressé sur Java Spigot.
-Mais il permet de pouvoir comprendre le mode de jeu réalisé.
-Je l'ai commencé en Décembre 2022, sans conaissance.
+Ce projet a été réalisé avec pour objectif de mettre à jour un mode de jeu sur Minecraft.
+Pour cela j'avais besoin de conaissance en Java et en Spigot.
+J'ai débutée fin Décembre 2022.
 
 ## 📚 Usages / API / Libs
 
