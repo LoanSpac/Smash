@@ -16,7 +16,7 @@ J'ai débutée fin Décembre 2022.
 
 ## 📡 Author
 
-* Discord : **Spac#5054**
+* Discord : **loanspac**
 * Github : [LoanSpac](https://github.com/LoanSpac)
 
 ***
