@@ -1,12 +1,13 @@
 package fr.loanspac.smash;
 
-import fr.loanspac.smash.champion.Champion;
-import fr.loanspac.smash.champion.ChampionDistributor;
-import fr.loanspac.smash.game.EGames;
+import fr.loanspac.smash.game.GameType;
+import fr.loanspac.smash.game.SmashGame;
+import fr.loanspac.smash.game.champion.Champion;
+import fr.loanspac.smash.game.champion.ChampionDistributor;
 import fr.loanspac.smash.game.player.SmashPlayer;
-import fr.loanspac.smash.manager.RegisterManager;
-import fr.loanspac.smash.tasks.WaitTask;
-import fr.loanspac.smash.team.Team;
+import fr.loanspac.smash.managers.CommandManager;
+import fr.loanspac.smash.managers.ListenerManager;
+import fr.loanspac.smash.game.team.Team;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -28,18 +29,23 @@ public final class Smash extends JavaPlugin {
     public void onEnable() {
         INSTANCE = this;
         Bukkit.getLogger().info("===========================");
-        Bukkit.getLogger().info("Enable Smash 1.0");
+        Bukkit.getLogger().info("Enable Smash 1.1");
         Bukkit.getLogger().info("===========================");
 
         this.championDistributor = new ChampionDistributor();
 
-        EGames.setState(EGames.WAITING);
-        RegisterManager registrationManager = new RegisterManager();
-        registrationManager.registration();
+        GameType.setState(GameType.WAITING);
+
+        CommandManager commands = new CommandManager();
+        commands.setCommand();
+
+        ListenerManager listeners = new ListenerManager();
+        listeners.registerEvents();
 
         Bukkit.getWorld("world").setPVP(false);
-        WaitTask waitTask = new WaitTask();
-        waitTask.runTaskTimer(this, 0, 20);
+        SmashGame game = new SmashGame();
+        game.runTaskTimer(this, 0, 20);
+
     }
 
     ///////////// Désactivation /////////////

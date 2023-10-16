@@ -1,7 +1,0 @@
-
-h
-java:S1301Z"KReplace this "switch" statement by "if" statements to increase readability.(¥èÖ™8Œ×½®Ÿ1
-o
-java:S3776L"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(ð¼öÕ8²×½®Ÿ1
-]	java:S125\"<This block of commented-out lines of code should be removed.(îƒ¯åøÿÿÿÿ8µ×½®Ÿ1
-X	java:S125~"<This block of commented-out lines of code should be removed.(ûÀó´8¸×½®Ÿ1
