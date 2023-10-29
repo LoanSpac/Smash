@@ -22,9 +22,6 @@ public class GameSettings {
     public static final Location redSpawn = new Location(Bukkit.getWorld("world"), 16.5, 66, 249.5, 180, 0);
     public static final Location blueSpawn = new Location(Bukkit.getWorld("world"), 16.5, 66, 201.5, 0, 0);
 
-    private static ArrayList<Player> gamePlayers = new ArrayList<>();
-    private static ArrayList<Player> hostPlayers = new ArrayList<>();
-
     //------------------
     public static ArrayList<Player> getGamePlayers() {
         return gamePlayers;
