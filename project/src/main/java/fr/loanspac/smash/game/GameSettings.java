@@ -8,9 +8,6 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 
 public class GameSettings {
-
-    ///////////////////////////////////////////////////////////////FINAL VARIABLES///////////////////////////////////////////////////////////////
-
     public static final String prefix = ChatColor.translateAlternateColorCodes('&', "§cSmash §8» ");
 
     // LOCALHOST
@@ -25,10 +22,6 @@ public class GameSettings {
     public static final Location redSpawn = new Location(Bukkit.getWorld("world"), 16.5, 66, 249.5, 180, 0);
     public static final Location blueSpawn = new Location(Bukkit.getWorld("world"), 16.5, 66, 201.5, 0, 0);
 
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////PLAYERS LISTS////////////////////////////////////////////////////////////////
     private static ArrayList<Player> gamePlayers = new ArrayList<>();
     private static ArrayList<Player> hostPlayers = new ArrayList<>();
 
@@ -36,9 +29,4 @@ public class GameSettings {
     public static ArrayList<Player> getGamePlayers() {
         return gamePlayers;
     }
-
-    public static ArrayList<Player> getHostPlayers() {
-        return hostPlayers;
-    }
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
