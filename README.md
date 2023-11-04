@@ -22,4 +22,4 @@ J'ai débutée fin Décembre 2022.
 ***
 ## 📝 License
 
-* CCBY 2023 [LoanSpac](https://github.com/LoanSpac)<br />
+* 2023 Open Source [LoanSpac](https://github.com/LoanSpac)<br />
