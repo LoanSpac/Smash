@@ -1,5 +1,4 @@
 # [FR] Smash
-<h2 align="center">Smash by LoanSpac</h2>
 
 ### 🏠 [Homepage](https://github.com/LoanSpac/Smash)
 
@@ -20,6 +19,6 @@ J'ai débutée fin Décembre 2022.
 * Github : [LoanSpac](https://github.com/LoanSpac)
 
 ***
-## 📝 License
+## 📝 Open Source
 
-* 2023 Open Source [LoanSpac](https://github.com/LoanSpac)<br />
+* 2023 [LoanSpac](https://github.com/LoanSpac)<br />
