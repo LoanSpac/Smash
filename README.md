@@ -1,6 +1,6 @@
-# [FR] Smash
+# Smash
 
-## 📄 Infos (FR)
+## 📄 About Smash (FR)
 
 Ce projet a été réalisé avec pour objectif de mettre à jour un mode de jeu sur Minecraft.
 Pour cela j'avais besoin de conaissance en Java et en Spigot.
@@ -13,5 +13,4 @@ J'ai débutée fin Décembre 2022.
 
 ## 📡 Contributor
 
-* Discord : **loanspac**
-* Github : [LoanSpac](https://github.com/LoanSpac)
+* [LoanSpac](https://github.com/LoanSpac)
